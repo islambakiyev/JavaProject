@@ -193,6 +193,5 @@ public class MainFrame extends JFrame {
         departureCityIdField.setLocation(250,170);
         departureCityIdField.setSize(200,30);
         add(departureCityIdField);
-        departureCityIdField.
     }
 }
