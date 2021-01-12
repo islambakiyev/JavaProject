@@ -171,27 +171,16 @@ public class MainFrame extends JFrame {
         }
     }
 
-    public static void readCities(){
+    public ArrayList<Cities> readCities(){
+        ArrayList<Cities> cities = null;
         try{
             objectInputStream = new ObjectInputStream(socket.getInputStream());
-            ArrayList<Cities> cities = (ArrayList<Cities>) objectInputStream.readObject();
-            city = new String[cities.size()];
+            cities = (ArrayList<Cities>) objectInputStream.readObject();
 
-            for(int i = 0; i<cities.size();i++){
-                city[i] = cities.get(i).getName();
-
-            }
-
-            createFlight.city = city;
         }catch (Exception e){
             e.printStackTrace();
         }
+        return cities;
     }
 
-    public void createComboBox(){
-        JComboBox departureCityIdField = new JComboBox(city);
-        departureCityIdField.setLocation(250,170);
-        departureCityIdField.setSize(200,30);
-        add(departureCityIdField);
-    }
 }

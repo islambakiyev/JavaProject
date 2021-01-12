@@ -30,13 +30,13 @@ public class ClientHandler extends Thread {
                 if (packageData.operationType.equals("ADD AIRCRAFT")) {
                     addAirCraftsToDb(packageData.getAircraft());
                 }
-                else if(packageData.operationType.equals("ADD CITY")){
+                if(packageData.operationType.equals("ADD CITY")){
                     addCitiesToDb(packageData.getCity());
                 }
-                else if(packageData.operationType.equals("ADD FLIGHT")){
+                if(packageData.operationType.equals("ADD FLIGHT")){
                     addFlightsToDb(packageData.getFlight());
                 }
-                else if (packageData.operationType.equals("LIST OF CITIES")){
+                if (packageData.operationType.equals("cities")){
                     objectOutputStream.writeObject(getCitiesFromDB());
                 }
             }

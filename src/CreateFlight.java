@@ -5,12 +5,18 @@ import java.awt.event.ActionListener;
 
 public class CreateFlight extends Container {
     MainFrame frame;
-    String[] city;
+    String[] cities;
 
     public CreateFlight(MainFrame frame){
         this.frame = frame;
         setSize(700,700);
         setLayout(null);
+
+            cities = new String[frame.readCities().size()];
+            for (int i = 0; i<frame.readCities().size();i++){
+                cities[i] = String.valueOf(frame.readCities().get(i).name);
+            }
+
 
         JLabel aircraftId = new JLabel("AIRCRAFT ID:");
         aircraftId.setBounds(100,100,150,50);
@@ -24,6 +30,11 @@ public class CreateFlight extends Container {
         JLabel departureCityId = new JLabel("Departure city id:");
         departureCityId.setBounds(100,150,150,50);
         add(departureCityId);
+
+        JComboBox departureCityIdField = new JComboBox(cities);
+        departureCityIdField.setLocation(250,170);
+        departureCityIdField.setSize(200,30);
+        add(departureCityIdField);
 
         JLabel arrivalCityId = new JLabel("Arrival city id");
         arrivalCityId.setBounds(100,200,150,50);

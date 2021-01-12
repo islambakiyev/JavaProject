@@ -38,10 +38,8 @@ public class CreatePage extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.showCreateFlightPage();
-                PackageData packageData = new PackageData("LIST OF CITIES");
+                PackageData packageData = new PackageData("cities");
                 MainFrame.sendPackage(packageData);
-                MainFrame.readCities();
-                frame.createComboBox();
             }
         });
 
