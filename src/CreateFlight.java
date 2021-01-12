@@ -2,20 +2,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class CreateFlight extends Container {
     MainFrame frame;
     String[] cities;
+    JComboBox departureCityIdField;
 
     public CreateFlight(MainFrame frame){
         this.frame = frame;
         setSize(700,700);
         setLayout(null);
-
-            cities = new String[frame.readCities().size()];
-            for (int i = 0; i<frame.readCities().size();i++){
-                cities[i] = String.valueOf(frame.readCities().get(i).name);
-            }
 
 
         JLabel aircraftId = new JLabel("AIRCRAFT ID:");
@@ -31,7 +28,7 @@ public class CreateFlight extends Container {
         departureCityId.setBounds(100,150,150,50);
         add(departureCityId);
 
-        JComboBox departureCityIdField = new JComboBox(cities);
+        departureCityIdField = new JComboBox();
         departureCityIdField.setLocation(250,170);
         departureCityIdField.setSize(200,30);
         add(departureCityIdField);
@@ -112,7 +109,12 @@ public class CreateFlight extends Container {
                 frame.backToCreatePageMenu();
             }
         });
+    }
 
-
+    public void refreshData(ArrayList<Cities> citiesCollection){
+        departureCityIdField.removeAllItems();
+        for(int i = 0; i<citiesCollection.size();i++){
+            departureCityIdField.addItem(citiesCollection.get(i).name);
+        }
     }
 }
