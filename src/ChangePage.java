@@ -17,7 +17,11 @@ public class ChangePage extends Container {
         changeCity.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frame.showChangeCitiesPage();
+                PackageData packageData1 = new PackageData("change cities");
+                MainFrame.sendPackage(packageData1);
 
+                MainFrame.changeCity.refreshData(frame.readCities());
             }
         });
 
@@ -27,7 +31,10 @@ public class ChangePage extends Container {
         changeAircraft.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                frame.showChangeAircraftsPage();
+                PackageData packageData2 = new PackageData("aircrafts list");
+                MainFrame.sendPackage(packageData2);
+                MainFrame.changeAircraft.refreshData(frame.readAircrafts());
             }
         });
 
@@ -37,7 +44,10 @@ public class ChangePage extends Container {
         changeFlight.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                frame.showChangeFlightsPage();
+                PackageData packageData = new PackageData("flights list");
+                MainFrame.sendPackage(packageData);
+                MainFrame.changeFlight.generateTable(frame.readFlights());
             }
         });
 

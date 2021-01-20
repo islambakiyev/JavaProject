@@ -1,10 +1,16 @@
-public class Tickets {
+import java.io.Serializable;
+
+public class Tickets implements Serializable {
     Long id;
     int flight_id;
     String name;
     String surname;
     String passport_number;
     String ticket_type;
+
+    public Tickets(Long id) {
+        this.id = id;
+    }
 
     public Tickets(Long id, int flight_id, String name, String surname, String passport_number, String ticket_type) {
         this.id = id;

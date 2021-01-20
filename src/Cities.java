@@ -6,6 +6,10 @@ public class Cities implements Serializable {
     String country;
     String shortName;
 
+    public Cities(Long id) {
+        this.id = id;
+    }
+
     public Cities(Long id, String name, String country, String shortName) {
         this.id = id;
         this.name = name;

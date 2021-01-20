@@ -6,8 +6,9 @@ import java.util.ArrayList;
 
 public class CreateFlight extends Container {
     MainFrame frame;
-    String[] cities;
     JComboBox departureCityIdField;
+    JComboBox aircraftIdField;
+    JComboBox arrivalCityIdField;
 
     public CreateFlight(MainFrame frame){
         this.frame = frame;
@@ -19,7 +20,7 @@ public class CreateFlight extends Container {
         aircraftId.setBounds(100,100,150,50);
         add(aircraftId);
 
-        JTextField aircraftIdField = new JTextField();
+        aircraftIdField = new JComboBox();
         aircraftIdField.setLocation(250,110);
         aircraftIdField.setSize(200,30);
         add(aircraftIdField);
@@ -37,7 +38,7 @@ public class CreateFlight extends Container {
         arrivalCityId.setBounds(100,200,150,50);
         add(arrivalCityId);
 
-        JTextField arrivalCityIdField = new JTextField();
+        arrivalCityIdField = new JComboBox();
         arrivalCityIdField.setLocation(250,220);
         arrivalCityIdField.setSize(200,30);
         add(arrivalCityIdField);
@@ -72,33 +73,33 @@ public class CreateFlight extends Container {
         JButton addButton = new JButton("ADD");
         addButton.setBounds(100,480,120,30);
         add(addButton);
-//        addButton.addActionListener(new ActionListener() {
+        addButton.addActionListener(new ActionListener() {
 
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                int airCraftId = Integer.parseInt(aircraftIdField.getText());
-//                aircraftIdField.setText("");
-//
-////                int departureCityId = Integer.parseInt(departureCityIdField.getText());
-////                departureCityIdField.setText("");
-//
-//                int arrivalCityId = Integer.parseInt(arrivalCityIdField.getText());
-//                arrivalCityIdField.setText("");
-//
-//                String departureTime = departureTimeField.getText();
-//                departureTimeField.setText("");
-//
-//                int economPrice = Integer.parseInt(economPlacePriceField.getText());
-//                economPlacePriceField.setText("");
-//
-//                int businessPrice = Integer.parseInt(businessPlacePriceField.getText());
-//                businessPlacePriceField.setText("");
-//
-//                Flights flight = new Flights(null,airCraftId,departureCityId,arrivalCityId,departureTime,economPrice,businessPrice);
-//                PackageData pd = new PackageData("ADD FLIGHT",flight);
-//                MainFrame.sendPackage(pd);
-//            }
-//        });
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int airCraftId = aircraftIdField.getSelectedIndex();
+                int idCraft = frame.fromIndexToIdAirCraft(airCraftId);
+
+                int departureCityIdNumber = departureCityIdField.getSelectedIndex();
+                int idDepartureCities = frame.fromIndexToId(departureCityIdNumber);
+
+                int arrivalCityIdNumber = arrivalCityIdField.getSelectedIndex();
+                int idArrivalCities = frame.fromIndexToId(arrivalCityIdNumber);
+
+                String departureTime = departureTimeField.getText();
+                departureTimeField.setText("");
+
+                int economPrice = Integer.parseInt(economPlacePriceField.getText());
+                economPlacePriceField.setText("");
+
+                int businessPrice = Integer.parseInt(businessPlacePriceField.getText());
+                businessPlacePriceField.setText("");
+
+                Flights flight = new Flights(null,idCraft,idDepartureCities,idArrivalCities,departureTime,economPrice,businessPrice);
+                PackageData pd = new PackageData("ADD FLIGHT",flight);
+                MainFrame.sendPackage(pd);
+            }
+        });
 
         JButton backButton = new JButton("BACK");
         backButton.setBounds(300,480,120,30);
@@ -115,6 +116,20 @@ public class CreateFlight extends Container {
         departureCityIdField.removeAllItems();
         for(int i = 0; i<citiesCollection.size();i++){
             departureCityIdField.addItem(citiesCollection.get(i).name);
+        }
+    }
+
+    public void refreshDataAircraft(ArrayList<Aircrafts> aircraftCollection){
+        aircraftIdField.removeAllItems();
+        for(int i = 0; i<aircraftCollection.size();i++){
+            aircraftIdField.addItem(aircraftCollection.get(i).name);
+        }
+    }
+
+    public void refreshDataArrivalCities(ArrayList<Cities> citiesCollection){
+        arrivalCityIdField.removeAllItems();
+        for(int i = 0; i<citiesCollection.size();i++){
+            arrivalCityIdField.addItem(citiesCollection.get(i).name);
         }
     }
 }

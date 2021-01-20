@@ -7,6 +7,10 @@ public class Aircrafts implements Serializable {
     int businessClassCapacity;
     int economClassCapacity;
 
+    public Aircrafts(Long id) {
+        this.id = id;
+    }
+
     public Aircrafts(Long id, String name, String model, int businessClassCapacity, int economClassCapacity) {
         this.id = id;
         this.name = name;

@@ -21,7 +21,7 @@ public class Server {
         System.out.println("Соединение с базой данных установлено");
 
         try{
-            ServerSocket server = new ServerSocket(203);
+            ServerSocket server = new ServerSocket(204);
             System.out.println("Соединение с сервером установлено");
 
             while(true){

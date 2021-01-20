@@ -40,7 +40,16 @@ public class CreatePage extends Container {
                 frame.showCreateFlightPage();
                 PackageData packageData = new PackageData("cities");
                 MainFrame.sendPackage(packageData);
+
+                PackageData packageDataArrivalCities = new PackageData("arrival cities");
+                MainFrame.sendPackage(packageDataArrivalCities);
+
+                PackageData packageDataAircrafts = new PackageData("aircrafts");
+                MainFrame.sendPackage(packageDataAircrafts);
+
                 MainFrame.createFlight.refreshData(frame.readCities());
+                MainFrame.createFlight.refreshDataArrivalCities(frame.readCities());
+                MainFrame.createFlight.refreshDataAircraft(frame.readAircrafts());
             }
         });
 

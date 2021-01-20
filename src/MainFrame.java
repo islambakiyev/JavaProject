@@ -17,7 +17,16 @@ public class MainFrame extends JFrame {
     public static CreateAircraft createAircraft;
     public static CreateCity createCity;
     public static CreateFlight createFlight;
+    public static ChangeCity changeCity;
+    public static ChangeAircraft changeAircraft;
+    public static RemoveCity removeCity;
+    public static RemoveAircraft removeAircraft;
     public static String[] city;
+    public static ChangeFlight changeFlight;
+    public static RemoveFlight removeFlight;
+    ArrayList<Cities> cities;
+    ArrayList<Aircrafts> aircrafts;
+    ArrayList<Flights> flights;
 
     public MainFrame(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -55,6 +64,30 @@ public class MainFrame extends JFrame {
         createFlight = new CreateFlight(this);
         createFlight.setVisible(false);
         add(createFlight);
+
+        changeCity = new ChangeCity(this);
+        changeCity.setVisible(false);
+        add(changeCity);
+
+        changeAircraft = new ChangeAircraft(this);
+        changeAircraft.setVisible(false);
+        add(changeAircraft);
+
+        removeCity = new RemoveCity(this);
+        removeCity.setVisible(false);
+        add(removeCity);
+
+        removeAircraft = new RemoveAircraft(this);
+        removeAircraft.setVisible(false);
+        add(removeAircraft);
+
+        changeFlight = new ChangeFlight(this);
+        changeFlight.setVisible(false);
+        add(changeFlight);
+
+        removeFlight = new RemoveFlight(this);
+        removeFlight.setVisible(false);
+        add(removeFlight);
     }
 
     public void showMainMenu(){
@@ -66,6 +99,12 @@ public class MainFrame extends JFrame {
         serverConnection.setVisible(false);
         createCity.setVisible(false);
         createFlight.setVisible(false);
+        changeCity.setVisible(false);
+        changeAircraft.setVisible(false);
+        removeCity.setVisible(false);
+        removeAircraft.setVisible(false);
+        changeFlight.setVisible(false);
+        removeFlight.setVisible(false);
     }
 
     public void showCreatePage(){
@@ -77,6 +116,12 @@ public class MainFrame extends JFrame {
         serverConnection.setVisible(false);
         createCity.setVisible(false);
         createFlight.setVisible(false);
+        changeCity.setVisible(false);
+        changeAircraft.setVisible(false);
+        removeCity.setVisible(false);
+        removeAircraft.setVisible(false);
+        changeFlight.setVisible(false);
+        removeFlight.setVisible(false);
     }
 
     public void showChangePage(){
@@ -88,6 +133,12 @@ public class MainFrame extends JFrame {
         serverConnection.setVisible(false);
         createCity.setVisible(false);
         createFlight.setVisible(false);
+        changeCity.setVisible(false);
+        changeAircraft.setVisible(false);
+        removeCity.setVisible(false);
+        removeAircraft.setVisible(false);
+        changeFlight.setVisible(false);
+        removeFlight.setVisible(false);
     }
 
     public void showRemovePage(){
@@ -99,6 +150,12 @@ public class MainFrame extends JFrame {
         serverConnection.setVisible(false);
         createCity.setVisible(false);
         createFlight.setVisible(false);
+        changeCity.setVisible(false);
+        changeAircraft.setVisible(false);
+        removeCity.setVisible(false);
+        removeAircraft.setVisible(false);
+        changeFlight.setVisible(false);
+        removeFlight.setVisible(false);
     }
 
     public void showCreateAircraftPage(){
@@ -110,6 +167,12 @@ public class MainFrame extends JFrame {
         serverConnection.setVisible(false);
         createCity.setVisible(false);
         createFlight.setVisible(false);
+        changeCity.setVisible(false);
+        changeAircraft.setVisible(false);
+        removeCity.setVisible(false);
+        removeAircraft.setVisible(false);
+        changeFlight.setVisible(false);
+        removeFlight.setVisible(false);
     }
 
     public void showCreateCityPage(){
@@ -121,6 +184,12 @@ public class MainFrame extends JFrame {
         serverConnection.setVisible(false);
         createCity.setVisible(true);
         createFlight.setVisible(false);
+        changeCity.setVisible(false);
+        changeAircraft.setVisible(false);
+        removeCity.setVisible(false);
+        removeAircraft.setVisible(false);
+        changeFlight.setVisible(false);
+        removeFlight.setVisible(false);
     }
 
     public void showCreateFlightPage(){
@@ -132,6 +201,114 @@ public class MainFrame extends JFrame {
         serverConnection.setVisible(false);
         createCity.setVisible(false);
         createFlight.setVisible(true);
+        changeCity.setVisible(false);
+        changeAircraft.setVisible(false);
+        removeCity.setVisible(false);
+        removeAircraft.setVisible(false);
+        changeFlight.setVisible(false);
+        removeFlight.setVisible(false);
+    }
+
+    public void showChangeCitiesPage(){
+        createAircraft.setVisible(false);
+        removePage.setVisible(false);
+        changePage.setVisible(false);
+        createPage.setVisible(false);
+        mainMenu.setVisible(false);
+        serverConnection.setVisible(false);
+        createCity.setVisible(false);
+        createFlight.setVisible(false);
+        changeCity.setVisible(true);
+        changeAircraft.setVisible(false);
+        removeCity.setVisible(false);
+        removeAircraft.setVisible(false);
+        changeFlight.setVisible(false);
+        removeFlight.setVisible(false);
+    }
+
+    public void showChangeAircraftsPage(){
+        createAircraft.setVisible(false);
+        removePage.setVisible(false);
+        changePage.setVisible(false);
+        createPage.setVisible(false);
+        mainMenu.setVisible(false);
+        serverConnection.setVisible(false);
+        createCity.setVisible(false);
+        createFlight.setVisible(false);
+        changeCity.setVisible(false);
+        changeAircraft.setVisible(true);
+        removeCity.setVisible(false);
+        removeAircraft.setVisible(false);
+        changeFlight.setVisible(false);
+        removeFlight.setVisible(false);
+    }
+
+    public void showRemoveCitiesPage(){
+        createAircraft.setVisible(false);
+        removePage.setVisible(false);
+        changePage.setVisible(false);
+        createPage.setVisible(false);
+        mainMenu.setVisible(false);
+        serverConnection.setVisible(false);
+        createCity.setVisible(false);
+        createFlight.setVisible(false);
+        changeCity.setVisible(false);
+        changeAircraft.setVisible(false);
+        removeCity.setVisible(true);
+        removeAircraft.setVisible(false);
+        changeFlight.setVisible(false);
+        removeFlight.setVisible(false);
+    }
+
+    public void showRemoveAircraftsPage(){
+        createAircraft.setVisible(false);
+        removePage.setVisible(false);
+        changePage.setVisible(false);
+        createPage.setVisible(false);
+        mainMenu.setVisible(false);
+        serverConnection.setVisible(false);
+        createCity.setVisible(false);
+        createFlight.setVisible(false);
+        changeCity.setVisible(false);
+        changeAircraft.setVisible(false);
+        removeCity.setVisible(false);
+        removeAircraft.setVisible(true);
+        changeFlight.setVisible(false);
+        removeFlight.setVisible(false);
+    }
+
+    public void showChangeFlightsPage(){
+        createAircraft.setVisible(false);
+        removePage.setVisible(false);
+        changePage.setVisible(false);
+        createPage.setVisible(false);
+        mainMenu.setVisible(false);
+        serverConnection.setVisible(false);
+        createCity.setVisible(false);
+        createFlight.setVisible(false);
+        changeCity.setVisible(false);
+        changeAircraft.setVisible(false);
+        removeCity.setVisible(false);
+        removeAircraft.setVisible(false);
+        changeFlight.setVisible(true);
+        removeFlight.setVisible(false);
+    }
+
+    public void removeFlightsPage(){
+        createAircraft.setVisible(false);
+        removePage.setVisible(false);
+        changePage.setVisible(false);
+        createPage.setVisible(false);
+        mainMenu.setVisible(false);
+        serverConnection.setVisible(false);
+        createCity.setVisible(false);
+        createFlight.setVisible(false);
+        changeCity.setVisible(false);
+        changeAircraft.setVisible(false);
+        removeCity.setVisible(false);
+        removeAircraft.setVisible(false);
+        changeFlight.setVisible(false);
+        removeFlight.setVisible(true);
     }
 
     public void backToCreatePageMenu(){
@@ -143,6 +320,11 @@ public class MainFrame extends JFrame {
         serverConnection.setVisible(false);
         createCity.setVisible(false);
         createFlight.setVisible(false);
+        changeCity.setVisible(false);
+        changeAircraft.setVisible(false);
+        removeAircraft.setVisible(false);
+        changeFlight.setVisible(false);
+        removeFlight.setVisible(false);
     }
 
 
@@ -152,6 +334,7 @@ public class MainFrame extends JFrame {
         try{
             socket = new Socket(ip,port);
             objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+            objectInputStream = new ObjectInputStream(socket.getInputStream());
             check = true;
 
         }catch (Exception e){
@@ -172,15 +355,57 @@ public class MainFrame extends JFrame {
     }
 
     public ArrayList<Cities> readCities(){
-        ArrayList<Cities> cities = null;
+        cities = null;
         try{
-            objectInputStream = new ObjectInputStream(socket.getInputStream());
             cities = (ArrayList<Cities>) objectInputStream.readObject();
 
         }catch (Exception e){
             e.printStackTrace();
         }
         return cities;
+    }
+
+    public ArrayList<Aircrafts> readAircrafts(){
+        aircrafts = null;
+        try{
+            aircrafts = (ArrayList<Aircrafts>) objectInputStream.readObject();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return aircrafts;
+    }
+
+    public ArrayList<Flights> readFlights(){
+        flights = null;
+        try{
+            flights = (ArrayList<Flights>) objectInputStream.readObject();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return flights;
+    }
+
+
+    public int fromIndexToId(int departureCityIdNumber){
+        int id = Math.toIntExact(cities.get(departureCityIdNumber).id);
+        return id;
+    }
+
+    public Long fromIndexToIdChange(int departureCityIdNumber){
+        Long id = cities.get(departureCityIdNumber).id;
+        return id;
+    }
+
+    public int fromIndexToIdAirCraft(int airCraftId){
+        int id = Math.toIntExact(aircrafts.get(airCraftId).id);
+        return id;
+    }
+
+    public Long fromIndexToIdAirCraftChange(int airCraftId){
+        Long id = aircrafts.get(airCraftId).id;
+        return id;
     }
 
 }
